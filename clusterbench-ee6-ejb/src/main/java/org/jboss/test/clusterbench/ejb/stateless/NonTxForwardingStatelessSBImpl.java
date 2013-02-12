@@ -8,7 +8,7 @@ import javax.ejb.TransactionAttributeType;
 
 @Stateless
 @Clustered
-@TransactionAttribute(TransactionAttributeType.REQUIRED) // this is the default anyway
-public class ForwardingStatelessSBImpl extends AbstractForwardingStatelessSBImpl
+@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+public class NonTxForwardingStatelessSBImpl extends AbstractForwardingStatelessSBImpl
         implements RemoteStatelessSB {
 }
