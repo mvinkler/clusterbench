@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright 2013 Radoslav Husár
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~   http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>clusterbench</artifactId>
+        <groupId>org.jboss.test</groupId>
+        <version>2.0.1.Final-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>clusterbench-ee7-ear-shared-sessions</artifactId>
+    <version>2.0.1.Final-SNAPSHOT</version>
+    <packaging>ear</packaging>
+    <name>${project.artifactId}</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <wildfly.version>10.0.0.CR4</wildfly.version>
+    </properties>
+
+    <build>
+        <finalName>clusterbench-ee7-shared-sessions</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <version>2.9</version>
+                <configuration>
+                    <version>7</version>
+                    <defaultLibBundleDir>lib</defaultLibBundleDir>
+                    <fileNameMapping>no-version</fileNameMapping>
+                    <modules>
+                        <ejbModule>
+                            <groupId>org.jboss.test</groupId>
+                            <artifactId>clusterbench-ee7-ejb</artifactId>
+                        </ejbModule>
+                        <webModule>
+                            <groupId>org.jboss.test</groupId>
+                            <artifactId>clusterbench-ee7-web</artifactId>
+                            <classifier>default</classifier>
+                            <bundleFileName>clusterbench-ee7-web-default-1.war</bundleFileName>
+                            <contextRoot>/clusterbench1</contextRoot>
+                        </webModule>
+                        <webModule>
+                            <groupId>org.jboss.test</groupId>
+                            <artifactId>clusterbench-ee7-web</artifactId>
+                            <classifier>default</classifier>
+                            <bundleFileName>clusterbench-ee7-web-default-2.war</bundleFileName>
+                            <contextRoot>/clusterbench2</contextRoot>
+                        </webModule>
+                    </modules>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.jboss.test</groupId>
+            <artifactId>clusterbench-ee7-ejb</artifactId>
+            <version>${project.version}</version>
+            <type>ejb</type>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.test</groupId>
+            <artifactId>clusterbench-ee7-web</artifactId>
+            <version>${project.version}</version>
+            <classifier>default</classifier>
+            <type>war</type>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>integration</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.wildfly.plugins</groupId>
+                        <artifactId>wildfly-maven-plugin</artifactId>
+                        <version>1.1.0.Alpha4</version>
+                        <executions>
+                            <execution>
+                                <id>integration-test-wildfly-deploy</id>
+                                <phase>pre-integration-test</phase>
+                                <goals>
+                                    <goal>start</goal>
+                                    <goal>deploy</goal>
+                                </goals>
+                                <configuration>
+                                    <version>${wildfly.version}</version>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>integration-test-wildfly-undeploy</id>
+                                <phase>post-integration-test</phase>
+                                <goals>
+                                    <goal>undeploy</goal>
+                                    <goal>shutdown</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+</project>
