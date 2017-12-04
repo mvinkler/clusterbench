@@ -11,8 +11,8 @@ public class AbstractForwardingStatelessSBImpl {
             Hashtable props = new Hashtable();
             props.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
             Context context = new InitialContext(props);
-            return (RemoteStatelessSB) context.lookup("ejb:" + "clusterbench-ee7/clusterbench-ee7-ejb//"
-                    + RemoteStatelessSBImpl.class.getSimpleName() + "!" + RemoteStatelessSB.class.getName());
+            return (RemoteStatelessSB) context.lookup("ejb:" + "clusterbench-ee7/clusterbench-ee7-ejb//RemoteStatelessSBImpl"
+                    + "!" + RemoteStatelessSB.class.getName());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
