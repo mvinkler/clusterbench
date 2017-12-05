@@ -3,19 +3,5 @@
         <ejb-receivers>
             <remoting-ejb-receiver outbound-connection-ref="remote-ejb-connection"/>
         </ejb-receivers>
-        <clusters>
-            <cluster name="ejb">
-                <connection-creation-options>
-                    <property name="org.xnio.Options.SSL_ENABLED" value="false"/>
-                    <property name="org.xnio.Options.SASL_POLICY_NOANONYMOUS" value="false"/>
-                </connection-creation-options>
-            </cluster>
-            <cluster name="ejb-forwarder">
-                <connection-creation-options>
-                    <property name="org.xnio.Options.SSL_ENABLED" value="false"/>
-                    <property name="org.xnio.Options.SASL_POLICY_NOANONYMOUS" value="false"/>
-                </connection-creation-options>
-            </cluster>
-        </clusters>
     </client-context>
 </jboss-ejb-client>
