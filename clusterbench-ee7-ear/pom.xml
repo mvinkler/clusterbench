@@ -62,25 +62,25 @@
                         <webModule>
                             <groupId>org.jboss.test</groupId>
                             <artifactId>cb-ee7-web</artifactId>
-                            <classifier>default</classifier>
+                            <classifier>d</classifier>
                             <contextRoot>/clusterbench</contextRoot>
                         </webModule>
                         <webModule>
                             <groupId>org.jboss.test</groupId>
                             <artifactId>cb-ee7-web</artifactId>
-                            <classifier>passivating</classifier>
+                            <classifier>p</classifier>
                             <contextRoot>/clusterbench-passivating</contextRoot>
                         </webModule>
                         <webModule>
                             <groupId>org.jboss.test</groupId>
                             <artifactId>cb-ee7-web</artifactId>
-                            <classifier>granular</classifier>
+                            <classifier>g</classifier>
                             <contextRoot>/clusterbench-granularoffload</contextRoot>
                         </webModule>
                         <webModule>
                             <groupId>org.jboss.test</groupId>
                             <artifactId>cb-ee7-web</artifactId>
-                            <classifier>offload</classifier>
+                            <classifier>o</classifier>
                             <contextRoot>/clusterbench-offload</contextRoot>
                             <!--
                               - certain databases impose a severe limit on identifier length,
@@ -106,28 +106,28 @@
             <groupId>org.jboss.test</groupId>
             <artifactId>cb-ee7-web</artifactId>
             <version>${project.version}</version>
-            <classifier>default</classifier>
+            <classifier>d</classifier>
             <type>war</type>
         </dependency>
         <dependency>
             <groupId>org.jboss.test</groupId>
             <artifactId>cb-ee7-web</artifactId>
             <version>${project.version}</version>
-            <classifier>passivating</classifier>
+            <classifier>p</classifier>
             <type>war</type>
         </dependency>
         <dependency>
             <groupId>org.jboss.test</groupId>
             <artifactId>cb-ee7-web</artifactId>
             <version>${project.version}</version>
-            <classifier>granular</classifier>
+            <classifier>g</classifier>
             <type>war</type>
         </dependency>
         <dependency>
             <groupId>org.jboss.test</groupId>
             <artifactId>cb-ee7-web</artifactId>
             <version>${project.version}</version>
-            <classifier>offload</classifier>
+            <classifier>o</classifier>
             <type>war</type>
         </dependency>
     </dependencies>

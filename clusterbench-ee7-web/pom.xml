@@ -111,8 +111,8 @@
                             <goal>war</goal>
                         </goals>
                         <configuration>
-                            <classifier>default</classifier>
-                            <webappDirectory>${project.build.directory}/${project.build.finalName}-default</webappDirectory>
+                            <classifier>d</classifier>
+                            <webappDirectory>${project.build.directory}/${project.build.finalName}-d</webappDirectory>
                             <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
                             <packagingExcludes>%regex[.*granular.*]</packagingExcludes>
                             <archive>
@@ -130,8 +130,8 @@
                             <goal>war</goal>
                         </goals>
                         <configuration>
-                            <classifier>passivating</classifier>
-                            <webappDirectory>${project.build.directory}/${project.build.finalName}-passivating</webappDirectory>
+                            <classifier>p</classifier>
+                            <webappDirectory>${project.build.directory}/${project.build.finalName}-p</webappDirectory>
                             <warSourceDirectory>${basedir}/src/main/webapp-passivating</warSourceDirectory>
                             <packagingExcludes>%regex[.*granular.*]</packagingExcludes>
                             <archive>
@@ -149,8 +149,8 @@
                             <goal>war</goal>
                         </goals>
                         <configuration>
-                            <classifier>granular</classifier>
-                            <webappDirectory>${project.build.directory}/${project.build.finalName}-granular</webappDirectory>
+                            <classifier>g</classifier>
+                            <webappDirectory>${project.build.directory}/${project.build.finalName}-g</webappDirectory>
                             <warSourceDirectory>${basedir}/src/main/webapp-granular</warSourceDirectory>
                             <packagingExcludes>%regex[.*/(cdi|ejb|jsf|load|session).*]</packagingExcludes>
                             <archive>
@@ -168,8 +168,8 @@
                             <goal>war</goal>
                         </goals>
                         <configuration>
-                            <classifier>offload</classifier>
-                            <webappDirectory>${project.build.directory}/${project.build.finalName}-offload</webappDirectory>
+                            <classifier>o</classifier>
+                            <webappDirectory>${project.build.directory}/${project.build.finalName}-o</webappDirectory>
                             <warSourceDirectory>${basedir}/src/main/webapp-offload</warSourceDirectory>
                             <packagingExcludes>%regex[.*granular.*]</packagingExcludes>
                             <archive>
